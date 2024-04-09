@@ -8,8 +8,8 @@ import { DatosSimulacionModel } from 'src/app/Components/Models/datosSimulacion.
   providedIn: 'root'
 })
 export class SimulacionService {
-  //private simulacionURL="https://simon.uis.edu.co/citricos/simuCultivo/simuCultivo/"
-  private simulacionURL= "http://localhost:8080/simuCultivo/"
+  private simulacionURL="https://simon.uis.edu.co/citricos/simuCultivo/simuCultivo/"
+  //private simulacionURL= "http://localhost:8080/simuCultivo/"
   datosGrafica: any;
   
 
