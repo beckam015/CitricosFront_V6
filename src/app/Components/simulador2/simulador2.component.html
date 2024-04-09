@@ -1,0 +1,993 @@
+<div class="form">
+  <div class="container py-5 h-120">
+    <div class="row d-flex justify-content-center align-items-center h-10">
+      <div class="col-xl-10">
+        <div class="card rounded-3 text-black">
+          <div class="row g-0">
+            <div class="text-center">
+              <img
+                src=" https://simon.uis.edu.co/citricos/assets/img/logo.png"
+                style="width: 180px"
+                alt="logo"
+              />
+              <h3 class="mt-1 mb-4 pb-1">
+                Bienvenido al simulador del cultivo
+              </h3>
+              <h4>Datos del cultivo-Sin riego</h4>
+              <div class="card-body p-md-4 mx-md-4">
+                <p class="text-align-justify">
+                  Este simulador recreara el comportamiento de un cultivo de
+                  citricos partiendo de las condiciones climaticas
+                  suministradas. Ingrese los datos de su cultivo en el siguiente
+                  formulario y después seleccione el botón de simular.
+                </p>
+                
+              </div>
+            </div>
+            <form
+              #forSimulacion="ngForm"
+              (ngSubmit)="EnviarDatosSimulacion(forSimulacion)"
+            >
+              <div class="card-body p-md-5 mx-md-4">
+                <div class="container">
+                  <div class="row">
+                    <div class="text-center">
+                        <h4>Datos de las condiciones climaticas del cultivo</h4>
+                        <br>
+      
+                        <table style="width: 90%">
+                          <tr>
+                            <th>Mes</th>
+                            <th>Cantidad de días con lluvia al mes</th>
+                            <th>Cantidad de agua(mm)</th>
+                          </tr>
+                          <tr>
+                            <th>Enero</th>
+                            <th>
+                              <div class="form-outline mb-3">
+                                <label for="canDiasMesEne"></label>
+                                <input
+                                  type="number"
+                                  class="form-control"
+                                  id="canDiasMesEne"
+                                  name="canDiasMesEne "
+                                  [(ngModel)]="simuDato.canDiasMesEne"
+                                  required
+                                />
+                              </div>
+                            </th>
+                            <th>
+                              <div class="form-outline mb-3">
+                                <label for="freclluvEne"></label>
+                                <input
+                                  type="number"
+                                  class="form-control"
+                                  id="freclluvEne"
+                                  name="freclluvEne "
+                                  [(ngModel)]="simuDato.freclluvEne"
+                                  required
+                                />
+                              </div>
+                            </th>
+                          </tr>
+      
+                          <tr>
+                            <th>Febrero</th>
+                            <th>
+                              <div class="form-outline mb-3">
+                                <label for="canDiasMesFeb"></label>
+                                <input
+                                  type="number"
+                                  class="form-control"
+                                  id="canDiasMesFeb"
+                                  name="canDiasMesFeb "
+                                  [(ngModel)]="simuDato.canDiasMesFeb"
+                                  required
+                                />
+                              </div>
+                            </th>
+                            <th>
+                              <div class="form-outline mb-3">
+                                <label for="freclluvFeb"></label>
+                                <input
+                                  type="number"
+                                  class="form-control"
+                                  id="freclluvFeb"
+                                  name="freclluvFeb"
+                                  [(ngModel)]="simuDato.freclluvFeb"
+                                  required
+                                />
+                              </div>
+                            </th>
+                          </tr>
+      
+                          <tr>
+                            <th>Marzo</th>
+                            <th>
+                              <div class="form-outline mb-3">
+                                <label for="canDiasMesMar"></label>
+                                <input
+                                  type="number"
+                                  class="form-control"
+                                  id="canDiasMesMar"
+                                  name="canDiasMesMar "
+                                  [(ngModel)]="simuDato.canDiasMesMar"
+                                  required
+                                />
+                              </div>
+                            </th>
+                            <th>
+                              <div class="form-outline mb-3">
+                                <label for="freclluvMar"></label>
+                                <input
+                                  type="number"
+                                  class="form-control"
+                                  id="freclluvMar"
+                                  name="freclluvMar "
+                                  [(ngModel)]="simuDato.freclluvMar"
+                                  required
+                                />
+                              </div>
+                            </th>
+                          </tr>
+      
+                          <tr>
+                            <th>Abril</th>
+                            <th>
+                              <div class="form-outline mb-3">
+                                <label for="canDiasMesAbr"></label>
+                                <input
+                                  type="number"
+                                  class="form-control"
+                                  id="canDiasMesAbr"
+                                  name="canDiasMesAbr "
+                                  [(ngModel)]="simuDato.canDiasMesAbr"
+                                  required
+                                />
+                              </div>
+                            </th>
+                            <th>
+                              <div class="form-outline mb-3">
+                                <label for="freclluvAbr"></label>
+                                <input
+                                  type="number"
+                                  class="form-control"
+                                  id="freclluvAbr"
+                                  name="freclluvAbr"
+                                  [(ngModel)]="simuDato.freclluvAbr"
+                                  required
+                                />
+                              </div>
+                            </th>
+                          </tr>
+      
+                          <tr>
+                            <th>Mayo</th>
+                            <th>
+                              <div class="form-outline mb-3">
+                                <label for="canDiasMesMay"></label>
+                                <input
+                                  type="number"
+                                  class="form-control"
+                                  id="canDiasMesMay"
+                                  name="canDiasMesMay "
+                                  [(ngModel)]="simuDato.canDiasMesMay"
+                                  required
+                                />
+                              </div>
+                            </th>
+                            <th>
+                              <div class="form-outline mb-2">
+                                <label for="freclluvMay"></label>
+                                <input
+                                  type="number"
+                                  class="form-control"
+                                  id="freclluvMay"
+                                  name="freclluvMay "
+                                  [(ngModel)]="simuDato.freclluvMay"
+                                  required
+                                />
+                              </div>
+                            </th>
+                          </tr>
+      
+                          <tr>
+                            <th>Junio</th>
+                            <th>
+                              <div class="form-outline mb-3">
+                                <label for="canDiasMesJun"></label>
+                                <input
+                                  type="number"
+                                  class="form-control"
+                                  id="canDiasMesJun"
+                                  name="canDiasMesJun "
+                                  [(ngModel)]="simuDato.canDiasMesJun"
+                                  required
+                                />
+                              </div>
+                            </th>
+                            <th>
+                              <div class="form-outline mb-3">
+                                <label for="freclluvJun"></label>
+                                <input
+                                  type="number"
+                                  class="form-control"
+                                  id="freclluvJun"
+                                  name="freclluvJun "
+                                  [(ngModel)]="simuDato.freclluvJun"
+                                  required
+                                />
+                              </div>
+                            </th>
+                          </tr>
+      
+                          <tr>
+                            <th>Julio</th>
+                            <th>
+                              <div class="form-outline mb-3">
+                                <label for="canDiasMesJul"></label>
+                                <input
+                                  type="number"
+                                  class="form-control"
+                                  id="canDiasMesJul"
+                                  name="canDiasMesJul "
+                                  [(ngModel)]="simuDato.canDiasMesJul"
+                                  required
+                                />
+                              </div>
+                            </th>
+                            <th>
+                              <div class="form-outline mb-3">
+                                <label for="freclluvJul"></label>
+                                <input
+                                  type="number"
+                                  class="form-control"
+                                  id="freclluvJul"
+                                  name="freclluvJul "
+                                  [(ngModel)]="simuDato.freclluvJul"
+                                  required
+                                />
+                              </div>
+                            </th>
+                          </tr>
+      
+                          <tr>
+                            <th>Agosto</th>
+                            <th>
+                              <div class="form-outline mb-3">
+                                <label for="canDiasMesAgo"></label>
+                                <input
+                                  type="number"
+                                  class="form-control"
+                                  id="canDiasMesAgo"
+                                  name="canDiasMesAgo "
+                                  [(ngModel)]="simuDato.canDiasMesAgo"
+                                  required
+                                />
+                              </div>
+                            </th>
+                            <th>
+                              <div class="form-outline mb-3">
+                                <label for="freclluvAgo"></label>
+                                <input
+                                  type="number"
+                                  class="form-control"
+                                  id="freclluvAgo"
+                                  name="freclluvAgo "
+                                  [(ngModel)]="simuDato.freclluvAgo"
+                                  required
+                                />
+                              </div>
+                            </th>
+                          </tr>
+      
+                          <tr>
+                            <th>Septiembre</th>
+                            <th>
+                              <div class="form-outline mb-3">
+                                <label for="canDiasMesSep"></label>
+                                <input
+                                  type="number"
+                                  class="form-control"
+                                  id="canDiasMesSep"
+                                  name="canDiasMesSep "
+                                  [(ngModel)]="simuDato.canDiasMesSep"
+                                  required
+                                />
+                              </div>
+                            </th>
+                            <th>
+                              <div class="form-outline mb-3">
+                                <label for="freclluvSep"></label>
+                                <input
+                                  type="number"
+                                  class="form-control"
+                                  id="freclluvSep"
+                                  name="freclluvSep "
+                                  [(ngModel)]="simuDato.freclluvSep"
+                                  required
+                                />
+                              </div>
+                            </th>
+                          </tr>
+      
+                          <tr>
+                            <th>Octubre</th>
+                            <th>
+                              <div class="form-outline mb-3">
+                                <label for="canDiasMesOct"></label>
+                                <input
+                                  type="number"
+                                  class="form-control"
+                                  id="canDiasMesOct"
+                                  name="canDiasMesOct "
+                                  [(ngModel)]="simuDato.canDiasMesOct"
+                                  required
+                                />
+                              </div>
+                            </th>
+                            <th>
+                              <div class="form-outline mb-3">
+                                <label for="freclluvOct"></label>
+                                <input
+                                  type="number"
+                                  class="form-control"
+                                  id="freclluvOct"
+                                  name="freclluvOct "
+                                  [(ngModel)]="simuDato.freclluvOct"
+                                  required
+                                />
+                              </div>
+                            </th>
+                          </tr>
+      
+                          <tr>
+                            <th>Noviembre</th>
+                            <th>
+                              <div class="form-outline mb-3">
+                                <label for="canDiasMesNov"></label>
+                                <input
+                                  type="number"
+                                  class="form-control"
+                                  id="canDiasMesNov"
+                                  name="canDiasMesNov "
+                                  [(ngModel)]="simuDato.canDiasMesNov"
+                                  required
+                                />
+                              </div>
+                            </th>
+                            <th>
+                              <div class="form-outline mb-3">
+                                <label for="freclluvNov"></label>
+                                <input
+                                  type="number"
+                                  class="form-control"
+                                  id="freclluvNov"
+                                  name="freclluvNov"
+                                  [(ngModel)]="simuDato.freclluvNov"
+                                  required
+                                />
+                              </div>
+                            </th>
+                          </tr>
+      
+                          <tr>
+                            <th>Diciembre</th>
+                            <th>
+                              <div class="form-outline mb-3">
+                                <label for="canDiasMesDic"></label>
+                                <input
+                                  type="number"
+                                  class="form-control"
+                                  id="canDiasMesDic"
+                                  name="canDiasMesDic "
+                                  [(ngModel)]="simuDato.canDiasMesDic"
+                                  required
+                                />
+                              </div>
+                            </th>
+                            <th>
+                              <div class="form-outline mb-3">
+                                <label for="freclluvDic"></label>
+                                <input
+                                  type="number"
+                                  class="form-control"
+                                  id="freclluvDic"
+                                  name="freclluvDic"
+                                  [(ngModel)]="simuDato.freclluvDic"
+                                  required
+                                />
+                              </div>
+                            </th>
+                          </tr>
+                          <br>
+                          <br>
+                          
+                        </table>
+                        <h4>Otros datos del cultivo</h4>
+                      </div>
+                      
+                    <div class="col-6">
+                      <!-- Column1 -->
+
+                      <div class="form-outline mb-3">
+                        <label for="Largo"
+                          >Largo del área de estudio(cm):</label
+                        >
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="Largo"
+                          name="largo"
+                          [(ngModel)]="simuDato.largo"
+                          required
+                        />
+                      </div>
+                      <div class="form-outline mb-3">
+                        <label for="Ancho"
+                          >Ancho del área de estudio(cm):</label
+                        >
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="Ancho"
+                          name="ancho"
+                          [(ngModel)]="simuDato.ancho"
+                          required
+                        />
+                      </div>
+                      <div class="form-outline mb-3">
+                        <label for="TempMax"
+                          >Temperatura máxima del cultivo(C°):</label
+                        >
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="TempMax"
+                          name="tempMax"
+                          [(ngModel)]="simuDato.tempMax"
+                          required
+                        />
+                      </div>
+                      <div class="form-outline mb-3">
+                        <label for="TempMin"
+                          >Temperatura mínima del cultivo(C°):</label
+                        >
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="TempMin"
+                          name="tempMin"
+                          [(ngModel)]="simuDato.tempMin"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <!-- Column 2 -->
+                      <div class="form-outline mb-3">
+                        <label for="TipoSuelo" class="form-label"
+                          >Tipo de suelo</label
+                        >
+                        <select
+                          id="TipoSuelo"
+                          class="form-select"
+                          name="TipoSuel"
+                          type="number"
+                          [(ngModel)]="simuDato.tipoSuel"
+                        >
+                          <option value="1">Arenoso</option>
+                          <option value="2">Franco arenoso</option>
+                          <option value="3">Franco</option>
+                          <option value="4">Franco Arcilloso</option>
+                          <option value="5">Arcilloso</option>
+                        </select>
+                      </div>
+                      <div class="form-outline mb-3">
+                        <label for="Nitrogeno"
+                          >Cantidad de Nitrogeno en el suelo (g):</label
+                        >
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="Nitrogeno"
+                          name="cantNit"
+                          [(ngModel)]="simuDato.cantNit"
+                          required
+                        />
+                      </div>
+
+                      <div class="form-outline mb-3">
+                        <label for="Potasio"
+                          >Cantidad de Potasio en el suelo (g):</label
+                        >
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="Potasio"
+                          name="cantPot"
+                          [(ngModel)]="simuDato.cantPot"
+                          required
+                        />
+                      </div>
+                      <div class="form-outline mb-3">
+                        <label for="Fosforo"
+                          >Cantidad de Fosforo en el suelo (g):</label
+                        >
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="Fosforo"
+                          name="cantFos "
+                          [(ngModel)]="simuDato.cantFos"
+                          required
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="text-black px-8 py-6 p-md-5 mx-md-6"
+                *ngIf="mostrargrafica"
+              >
+                <app-grafica1></app-grafica1>
+                <app-grafica2></app-grafica2>
+                <app-grafica3></app-grafica3>
+
+                <!-- <app-simulador2></app-simulador2> -->
+                <div class="text-center">
+                  <h4>Datos del cultivo-Con riego</h4>
+                  <div class="card-body p-md-4 mx-md-4">
+                    <p class="text-align-justify">
+                      Este segundo simulador esta pensado para recrear
+                      diferentes escenarios teniendo en cuenta la frecuencia de
+                      riego y la cantida de agua que se le aplicara al cultivo
+                      por el método de goteo, tenga en cuenta que para esta
+                      versión del software se asumira que el arbol tiene una
+                      edad de 2 a 5 años.
+                    </p>
+                  </div>
+
+                  <table style="width: 90%">
+                    <tr>
+                      <th>Mes</th>
+                      <th>Frecuencia de riego</th>
+                      <th>Cantidad de agua(L)</th>
+                    </tr>
+                    <tr>
+                      <th>Enero</th>
+                      <th>
+                        <div class="form-outline mb-3">
+                          <label for="frecEne" class="form-label"></label>
+                          <select
+                            id="frecEne"
+                            class="form-select"
+                            name="frecEne"
+                            type="number"
+                            [(ngModel)]="simuDato.frecRieEne"
+                          >
+                            <option value="1">1 vez al mes</option>
+                            <option value="2">cada 3 días</option>
+                            <option value="3">cada 7 días</option>
+                            <option value="4">cada 14 días</option>
+                          </select>
+                        </div>
+                      </th>
+                      <th>
+                        <div class="form-outline mb-3">
+                          <label for="canAguaEne"></label>
+                          <input
+                            type="number"
+                            class="form-control"
+                            id="canAguaEne"
+                            name="canAguaEne "
+                            [(ngModel)]="simuDato.cantRieEne"
+                            required
+                          />
+                        </div>
+                      </th>
+                    </tr>
+
+                    <tr>
+                      <th>Febrero</th>
+                      <th>
+                        <div class="form-outline mb-3">
+                          <label for="frecFeb" class="form-label"></label>
+                          <select
+                            id="frecFeb"
+                            class="form-select"
+                            name="frecFeb"
+                            type="number"
+                            [(ngModel)]="simuDato.frecRieFeb"
+                          >
+                            <option value="1">1 vez al mes</option>
+                            <option value="2">cada 3 días</option>
+                            <option value="3">cada 7 días</option>
+                            <option value="4">cada 14 días</option>
+                          </select>
+                        </div>
+                      </th>
+                      <th>
+                        <div class="form-outline mb-3">
+                          <label for="canAguaFeb"></label>
+                          <input
+                            type="number"
+                            class="form-control"
+                            id="canAguaFeb"
+                            name="canAguaFeb"
+                            [(ngModel)]="simuDato.cantRieFeb"
+                            required
+                          />
+                        </div>
+                      </th>
+                    </tr>
+
+                    <tr>
+                      <th>Marzo</th>
+                      <th>
+                        <div class="form-outline mb-3">
+                          <label for="frecMar" class="form-label"></label>
+                          <select
+                            id="frecMar"
+                            class="form-select"
+                            name="frecMar"
+                            type="number"
+                            [(ngModel)]="simuDato.frecRieMar"
+                          >
+                            <option value="1">1 vez al mes</option>
+                            <option value="2">cada 3 días</option>
+                            <option value="3">cada 7 días</option>
+                            <option value="4">cada 14 días</option>
+                          </select>
+                        </div>
+                      </th>
+                      <th>
+                        <div class="form-outline mb-3">
+                          <label for="canAguaMar"></label>
+                          <input
+                            type="number"
+                            class="form-control"
+                            id="canAguaMar"
+                            name="canAguaMar "
+                            [(ngModel)]="simuDato.cantRieMar"
+                            required
+                          />
+                        </div>
+                      </th>
+                    </tr>
+
+                    <tr>
+                      <th>Abril</th>
+                      <th>
+                        <div class="form-outline mb-3">
+                          <label for="frecAbr" class="form-label"></label>
+                          <select
+                            id="frecAbr"
+                            class="form-select"
+                            name="frecAbr"
+                            type="number"
+                            [(ngModel)]="simuDato.frecRieAbr"
+                          >
+                            <option value="1">1 vez al mes</option>
+                            <option value="2">cada 3 días</option>
+                            <option value="3">cada 7 días</option>
+                            <option value="4">cada 14 días</option>
+                          </select>
+                        </div>
+                      </th>
+                      <th>
+                        <div class="form-outline mb-3">
+                          <label for="canAguaAbr"></label>
+                          <input
+                            type="number"
+                            class="form-control"
+                            id="canAguaAbr"
+                            name="canAguaAbr"
+                            [(ngModel)]="simuDato.cantRieAbr"
+                            required
+                          />
+                        </div>
+                      </th>
+                    </tr>
+
+                    <tr>
+                      <th>Mayo</th>
+                      <th>
+                        <div class="form-outline mb-3">
+                          <label for="frecMay" class="form-label"></label>
+                          <select
+                            id="frecMay"
+                            class="form-select"
+                            name="frecMay"
+                            type="number"
+                            [(ngModel)]="simuDato.frecRieMay"
+                          >
+                            <option value="1">1 vez al mes</option>
+                            <option value="2">cada 3 días</option>
+                            <option value="3">cada 7 días</option>
+                            <option value="4">cada 14 días</option>
+                          </select>
+                        </div>
+                      </th>
+                      <th>
+                        <div class="form-outline mb-2">
+                          <label for="canAguaMay"></label>
+                          <input
+                            type="number"
+                            class="form-control"
+                            id="canAguaMay"
+                            name="canAguaMay "
+                            [(ngModel)]="simuDato.cantRieMay"
+                            required
+                          />
+                        </div>
+                      </th>
+                    </tr>
+
+                    <tr>
+                      <th>Junio</th>
+                      <th>
+                        <div class="form-outline mb-3">
+                          <label for="frecJun" class="form-label"></label>
+                          <select
+                            id="frecJun"
+                            class="form-select"
+                            name="frecJun"
+                            type="number"
+                            [(ngModel)]="simuDato.frecRieJun"
+                          >
+                            <option value="1">1 vez al mes</option>
+                            <option value="2">cada 3 días</option>
+                            <option value="3">cada 7 días</option>
+                            <option value="4">cada 14 días</option>
+                          </select>
+                        </div>
+                      </th>
+                      <th>
+                        <div class="form-outline mb-3">
+                          <label for="canAguaJun"></label>
+                          <input
+                            type="number"
+                            class="form-control"
+                            id="canAguaJun"
+                            name="canAguaJun "
+                            [(ngModel)]="simuDato.cantRieJun"
+                            required
+                          />
+                        </div>
+                      </th>
+                    </tr>
+
+                    <tr>
+                      <th>Julio</th>
+                      <th>
+                        <div class="form-outline mb-3">
+                          <label for="frecJul" class="form-label"></label>
+                          <select
+                            id="frecJul"
+                            class="form-select"
+                            name="frecJul"
+                            type="number"
+                            [(ngModel)]="simuDato.frecRieJul"
+                          >
+                            <option value="1">1 vez al mes</option>
+                            <option value="2">cada 3 días</option>
+                            <option value="3">cada 7 días</option>
+                            <option value="4">cada 14 días</option>
+                          </select>
+                        </div>
+                      </th>
+                      <th>
+                        <div class="form-outline mb-3">
+                          <label for="canAguaJul"></label>
+                          <input
+                            type="number"
+                            class="form-control"
+                            id="canAguaJul"
+                            name="canAguaJul "
+                            [(ngModel)]="simuDato.cantRieJul"
+                            required
+                          />
+                        </div>
+                      </th>
+                    </tr>
+
+                    <tr>
+                      <th>Agosto</th>
+                      <th>
+                        <div class="form-outline mb-3">
+                          <label for="frecAgo" class="form-label"></label>
+                          <select
+                            id="frecAgo"
+                            class="form-select"
+                            name="frecAgo"
+                            type="number"
+                            [(ngModel)]="simuDato.frecRieAgo"
+                          >
+                            <option value="1">1 vez al mes</option>
+                            <option value="2">cada 3 días</option>
+                            <option value="3">cada 7 días</option>
+                            <option value="4">cada 14 días</option>
+                          </select>
+                        </div>
+                      </th>
+                      <th>
+                        <div class="form-outline mb-3">
+                          <label for="canAguaAgo"></label>
+                          <input
+                            type="number"
+                            class="form-control"
+                            id="canAguaAgo"
+                            name="canAguaAgo "
+                            [(ngModel)]="simuDato.cantRieAgo"
+                            required
+                          />
+                        </div>
+                      </th>
+                    </tr>
+
+                    <tr>
+                      <th>Septiembre</th>
+                      <th>
+                        <div class="form-outline mb-3">
+                          <label for="frecSep" class="form-label"></label>
+                          <select
+                            id="frecSep"
+                            class="form-select"
+                            name="frecSep"
+                            type="number"
+                            [(ngModel)]="simuDato.frecRieSep"
+                          >
+                            <option value="1">1 vez al mes</option>
+                            <option value="2">cada 3 días</option>
+                            <option value="3">cada 7 días</option>
+                            <option value="4">cada 14 días</option>
+                          </select>
+                        </div>
+                      </th>
+                      <th>
+                        <div class="form-outline mb-3">
+                          <label for="canAguaSep"></label>
+                          <input
+                            type="number"
+                            class="form-control"
+                            id="canAguaSep"
+                            name="canAguaSep "
+                            [(ngModel)]="simuDato.cantRieSep"
+                            required
+                          />
+                        </div>
+                      </th>
+                    </tr>
+
+                    <tr>
+                      <th>Octubre</th>
+                      <th>
+                        <div class="form-outline mb-3">
+                          <label for="frecOct" class="form-label"></label>
+                          <select
+                            id="frecOct"
+                            class="form-select"
+                            name="frecOct"
+                            type="number"
+                            [(ngModel)]="simuDato.frecRieOct"
+                          >
+                            <option value="1">1 vez al mes</option>
+                            <option value="2">cada 3 días</option>
+                            <option value="3">cada 7 días</option>
+                            <option value="4">cada 14 días</option>
+                          </select>
+                        </div>
+                      </th>
+                      <th>
+                        <div class="form-outline mb-3">
+                          <label for="canAguaOct"></label>
+                          <input
+                            type="number"
+                            class="form-control"
+                            id="canAguaOct"
+                            name="canAguaOct "
+                            [(ngModel)]="simuDato.cantRieOct"
+                            required
+                          />
+                        </div>
+                      </th>
+                    </tr>
+
+                    <tr>
+                      <th>Noviembre</th>
+                      <th>
+                        <div class="form-outline mb-3">
+                          <label for="frecNov" class="form-label"></label>
+                          <select
+                            id="frecNov"
+                            class="form-select"
+                            name="frecNov"
+                            type="number"
+                            [(ngModel)]="simuDato.frecRieNov"
+                          >
+                            <option value="1">1 vez al mes</option>
+                            <option value="2">cada 3 días</option>
+                            <option value="3">cada 7 días</option>
+                            <option value="4">cada 14 días</option>
+                          </select>
+                        </div>
+                      </th>
+                      <th>
+                        <div class="form-outline mb-3">
+                          <label for="canAguaNov"></label>
+                          <input
+                            type="number"
+                            class="form-control"
+                            id="canAguaNov"
+                            name="canAguaNov"
+                            [(ngModel)]="simuDato.cantRieNov"
+                            required
+                          />
+                        </div>
+                      </th>
+                    </tr>
+
+                    <tr>
+                      <th>Diciembre</th>
+                      <th>
+                        <div class="form-outline mb-3">
+                          <label for="frecDic" class="form-label"></label>
+                          <select
+                            id="frecDic"
+                            class="form-select"
+                            name="frecDic"
+                            type="number"
+                            [(ngModel)]="simuDato.frecRieDic"
+                          >
+                            <option value="1">1 vez al mes</option>
+                            <option value="2">cada 3 días</option>
+                            <option value="3">cada 7 días</option>
+                            <option value="4">cada 14 días</option>
+                          </select>
+                        </div>
+                      </th>
+                      <th>
+                        <div class="form-outline mb-3">
+                          <label for="canAguaDic"></label>
+                          <input
+                            type="number"
+                            class="form-control"
+                            id="canAguaDic"
+                            name="canAguaDic"
+                            [(ngModel)]="simuDato.cantRieDic"
+                            required
+                          />
+                        </div>
+                      </th>
+                    </tr>
+                  </table>
+                </div>
+                <div class="text-center pt-1 mb-5 pb-1">
+                  <div
+                    class="text-black px-8 py-6 p-md-5 mx-md-6"
+                    *ngIf="mostrargrafica2"
+                  >
+                    <app-grafica4></app-grafica4>
+                    <app-grafica5></app-grafica5>
+                    <app-grafica6></app-grafica6>
+                  </div>
+                </div>
+              </div>
+              <div class="text-center pt-1 mb-5 pb-1">
+                <button
+                  class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+                  type="submit"
+                >
+                  Simular
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="flex-item">
+    <div class="flex-item">
+      <div class="grafica">
+        <canvas
+          baseChart
+          [data]="salesData"
+          [type]="'line'"
+          [options]="chartOptions"
+        >
+        </canvas>
+      </div>
+    </div>
+  
+    <div class="text-center pt-1 mb-5 pb-1">
+      <button
+        class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+        (click)="Graficar1()"
+      >
+        Actualizar
+      </button>
+    </div>
+  </div>
+  

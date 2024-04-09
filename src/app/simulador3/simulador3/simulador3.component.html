@@ -1,0 +1,260 @@
+<div class="form">
+    <div class="container py-5 h-120">
+      <div class="row d-flex justify-content-center align-items-center h-10">
+        <div class="col-xl-10">
+          <div class="card rounded-3 text-black">
+            <div class="row g-0">
+              <div class="text-center">
+                <img
+                  src=" https://simon.uis.edu.co/citricos/assets/img/logo.png"
+                  style="width: 180px"
+                  alt="logo"
+                />
+                <h2 class="mt-1 mb-4 pb-1">
+                  Bienvenido al simulador del cultivo
+                </h2>
+                <h3>Simulador de riego optimo</h3>
+                <div class="card-body p-md-4 mx-md-4">
+                  <p class="text-align-justify">
+                    Este simulador recreara el comportamiento de un cultivo de
+                    citricos partiendo de las condiciones clímaticas que tiene la
+                    ciudad de bucaramanga en el departamento de santander. Ingrese
+                    los datos de su cultivo en el siguiente formulario, especificando
+                    la cantidad de frutos que espera, el mes que espera dicha producción
+                    y la frecuencia de riego con la que quiere regar el cultivo.
+                    Después seleccione el botón de simular y el simulador le proporcionara
+                    el riego optimo que necesita su cultivo para llegar a sus metas de producción.
+                    Tenga encuenta que la gráfica representa la lluvia en el departamento de santander
+                    durante el año.
+                  </p>
+                  <img
+                    src=" https://simon.uis.edu.co/citricos/assets/img/lluvias.JPG"
+                    style="width: 400px"
+                    alt="logo"
+                  />
+                </div>
+              </div>
+              <form
+                #forSimulacion="ngForm"
+                (ngSubmit)="EnviarDatosSimulacion(forSimulacion)"
+              >
+                <div class="card-body p-md-5 mx-md-4">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-6">
+                        <!-- Column1 -->
+                      
+                        <div class="form-outline mb-3">
+                          <label for="frecRieFinal" class="form-label">Frecuencia de riego que va tener el cultivo:</label>
+                          <select
+                            id="frecRieFinal"
+                            class="form-select"
+                            name="frecRieFinal"
+                            type="number"
+                            [(ngModel)]="frecRieFinal"
+                          >
+                            <option value="1">1 vez al mes</option>
+                            <option value="2">cada 3 días</option>
+                            <option value="3">cada 7 días</option>
+                            <option value="4">cada 14 días</option>
+                          </select>
+                        </div>
+  
+                        <div class="form-outline mb-3">
+                          <label for="Largo"
+                            >Largo del área de estudio(cm):</label
+                          >
+                          <input
+                            type="number"
+                            class="form-control"
+                            id="Largo"
+                            name="largo"
+                            [(ngModel)]="simuDato.largo"
+                            required
+                          />
+                        </div>
+                        <div class="form-outline mb-3">
+                          <label for="Ancho"
+                            >Ancho del área de estudio(cm):</label
+                          >
+                          <input
+                            type="number"
+                            class="form-control"
+                            id="Ancho"
+                            name="ancho"
+                            [(ngModel)]="simuDato.ancho"
+                            required
+                          />
+                        </div>
+                        <div class="form-outline mb-3">
+                          <label for="TempMax"
+                            >Temperatura máxima del cultivo(C°):</label
+                          >
+                          <input
+                            type="number"
+                            class="form-control"
+                            id="TempMax"
+                            name="tempMax"
+                            [(ngModel)]="simuDato.tempMax"
+                            required
+                          />
+                        </div>
+                        <div class="form-outline mb-3">
+                          <label for="TempMin"
+                            >Temperatura mínima del cultivo(C°):</label
+                          >
+                          <input
+                            type="number"
+                            class="form-control"
+                            id="TempMin"
+                            name="tempMin"
+                            [(ngModel)]="simuDato.tempMin"
+                            required
+                          />
+                        </div>
+                      </div>
+                      <div class="col-6">
+                        <!-- Column 2 -->
+                        <div class="form-outline mb-3">
+                          <label for="cantFru"
+                            >Frutos esperados:</label
+                          >
+                          <input
+                            type="number"
+                            class="form-control"
+                            id="cantFru"
+                            name="cantFru"
+                            [(ngModel)]="cantFru"
+                            required
+                          />
+                        </div>
+                        <div class="form-outline mb-3">
+                          <label for="MesFin" class="form-label">Mes en el que se espera la producción:</label>
+                          <select
+                            id="frecEne"
+                            class="form-select"
+                            name="frecEne"
+                            type="number"
+                            [(ngModel)]="simuDato.fechaFinal"
+                          >
+                            <option value="30">Enero</option>
+                            <option value="60">Febrero</option>
+                            <option value="90">Marzo</option>
+                            <option value="120">Abril</option>
+                            <option value="150">Mayo</option>
+                            <option value="180">Junio</option>
+                            <option value="210">Julio</option>
+                            <option value="240">Agosto</option>
+                            <option value="270">Septiembre</option>
+                            <option value="300">Octubre</option>
+                            <option value="330">Noviembre</option>
+                            <option value="360">Diciembre</option>
+                          </select>
+                        </div>
+                        <div class="form-outline mb-3">
+                          <label for="TipoSuelo" class="form-label"
+                            >Tipo de suelo</label
+                          >
+                          <select
+                            id="TipoSuelo"
+                            class="form-select"
+                            name="TipoSuel"
+                            type="number"
+                            [(ngModel)]="simuDato.tipoSuel"
+                          >
+                            <option value="1">Arenoso</option>
+                            <option value="2">Franco arenoso</option>
+                            <option value="3">Franco</option>
+                            <option value="4">Franco Arcilloso</option>
+                            <option value="5">Arcilloso</option>
+                          </select>
+                        </div>
+                        <div class="form-outline mb-3">
+                          <label for="Nitrogeno"
+                            >Cantidad de Nitrogeno en el suelo (g):</label
+                          >
+                          <input
+                            type="number"
+                            class="form-control"
+                            id="Nitrogeno"
+                            name="cantNit"
+                            [(ngModel)]="simuDato.cantNit"
+                            required
+                          />
+                        </div>
+  
+                        <div class="form-outline mb-3">
+                          <label for="Potasio"
+                            >Cantidad de Potasio en el suelo (g):</label
+                          >
+                          <input
+                            type="number"
+                            class="form-control"
+                            id="Potasio"
+                            name="cantPot"
+                            [(ngModel)]="simuDato.cantPot"
+                            required
+                          />
+                        </div>
+                        <div class="form-outline mb-3">
+                          <label for="Fosforo"
+                            >Cantidad de Fosforo en el suelo (g):</label
+                          >
+                          <input
+                            type="number"
+                            class="form-control"
+                            id="Fosforo"
+                            name="cantFos "
+                            [(ngModel)]="simuDato.cantFos"
+                            required
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+                <div
+                  class="text-black px-8 py-6 p-md-5 mx-md-6"
+                  *ngIf="mostrargrafica"
+                >
+                <p>
+                  Con los datos suministrados {{predCult}}, este es el riego que se aplicó en cada mes:
+                </p>
+
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Mes</th>
+                      <th>Riego (L)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let valor of datosControlRiego; let i = index">
+                      <td>{{ i + 1 }}</td>
+                      <td>{{ valor }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                  <app-grafica4></app-grafica4>
+                  <app-grafica5></app-grafica5>
+                  <app-grafica6></app-grafica6>
+
+                </div>
+                <div class="text-center pt-1 mb-5 pb-1">
+                  <button
+                    class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"
+                    type="submit"
+                  >
+                    Simular
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
